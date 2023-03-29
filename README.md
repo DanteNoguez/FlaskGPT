@@ -11,4 +11,4 @@ location / {
 ```
 
 ### Acknowledgements
-Big thank you to [oneryalcin](https://gist.github.com/oneryalcin/2921408da70266aa61f9c40cb2973865) and [python273](https://gist.github.com/python273/563177b3ad5b9f74c0f8f3299ec13850) for their ideas.
+Big thank you to [oneryalcin](https://gist.github.com/oneryalcin/2921408da70266aa61f9c40cb2973865) and [python273](https://gist.github.com/python273/563177b3ad5b9f74c0f8f3299ec13850) for their ideas. Shout out to [David Richards](https://betterprogramming.pub/openai-sse-sever-side-events-streaming-api-733b8ec32897).
