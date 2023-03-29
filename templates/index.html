@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlaskGPT</title>
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+        <a href="" class="planes-links">FlaskGPT</a>
+    </div>
+</header>
+
+    <div>
+        <img src="static/img/logo.gif" alt="logo" width="300" class="center"/>
+        <h2 class="pod-h2">QA with ChatGPT, Langchain and Flask</h2>
+        <h3 class="pod-h3">Stream responses like this:</h3>
+    </div>
+    <section class="buscar">  
+      <div class="search-container">
+        <form id="input-form" method="POST" class="d-flex">
+          <input type="text" name="input_text" maxlength="500" class="d-flex">
+        </form>
+        <div class="respuesta">
+          <div class="resp-grid-container">
+              <div class="resp-grid">
+                  <div class="cajas">
+                  <nav>
+                      <div class="et-p" id="result">
+                      </div>
+                  </nav>    
+                  </div>
+        <script>
+          var searchForm = document.getElementById('input-form');
+          searchForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+        
+            var formData = new FormData(searchForm);
+            formData.append('input_text', searchForm.elements.input_text.value);
+        
+            try {
+              const response = await fetch('/completion', {
+                method: 'POST',
+                body: formData
+              });
+              const reader = response.body.getReader();
+              document.getElementById("result").innerHTML = ""; 
+              while (true) {
+                const {done, value} = await reader.read(); 
+                if (done) break; 
+                const text = new TextDecoder().decode(value); 
+                document.getElementById("result").innerHTML += text; 
+              }
+            } catch (error) {
+              console.error(error);
+            }
+          });
+        </script>
+</body>
+</html>
